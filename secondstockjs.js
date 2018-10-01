@@ -1,27 +1,43 @@
-/*
-var input = document.getElementById("wind");
-input.addEventListener("keyup", function(event) {
-  event.preventDefault();
-  if (event.keyCode === 13) {
-    document.getElementById("icon").click();
+
+/*document.getElementById('wind').onkeydown = function(event) {
+  if (event.keyCode == 13) {
+      search(wind);
   }
-});
+}
 */
+var field = [];
+function test(event){
+
+  if (event.keyCode == 13){
+  field.push(wind.value);
+  //console.log(field);
+  //var glon = field[0];
+  search();
+  
+}
+ // console.log(wind.value);
+}
+
+function runit(){
+  console.log("ruit");
+  console.log(field[0]);
+      
+}
 document.getElementById("btn").addEventListener("mousedown", compare);
-
+// Get the input field
 function search(){
-
+ 
       var criteria = document.getElementById('wind').value;
       var capped = criteria.toUpperCase();
       var b= 0;
+
     fetch('https://raykugler.github.io/stock/symbols.json')
     .then(function(r){
       return r.json();
     })
 
     .then(function(r){
-  console.log('hello');
-
+  
 
     var matches = [];
       console.log(r.length);
@@ -35,9 +51,7 @@ function search(){
           matches.push(r[i]["Symbol"]);
 
           }
-        else {
-          console.log("nope");
-        }   }
+         }
 
     return matches;
     })
@@ -108,9 +122,9 @@ function stock1(){
 
 }
 function stock2(){
-  var buttId2 = this.id;
-  var compId = document.getElementById("myTable").rows[buttId2].cells[1].innerHTML;
-  var compname = document.getElementById("myTable").rows[buttId2].cells[0].innerHTML;
+  var buttId = this.id;
+  var compId = document.getElementById("myTable").rows[buttId].cells[1].innerHTML;
+  var compname = document.getElementById("myTable").rows[buttId].cells[0].innerHTML;
   //    var symbId = document.getElementById("myTable").rows[h].cells[0].id;
   document.getElementById('secondspot').innerHTML = compId;
   document.getElementById('secondcompany').innerHTML = compname;
