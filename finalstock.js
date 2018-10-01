@@ -2,7 +2,6 @@ document.getElementById("wind").focus();
 document.getElementById("searchicon").addEventListener("click", search);
 document.getElementById("comparebtn").addEventListener("click", compare);
 document.getElementById("resetbtn").addEventListener("click", reset);
-console.log('yep');
 
 function test (){
   console.log('yep');
@@ -31,7 +30,6 @@ function search(){
 
   .then(function(r){
       var matches = [];
-        console.log('matches r-length' + r.length);
       for(i = 0; i < r.length; i++){
         if(r[i]["Company Name"].includes(capped) && capped.length > 3) {
           matches.push(r[i]["Company Name"]);
@@ -42,7 +40,6 @@ function search(){
             matches.push(r[i]["Symbol"]);
           }
         }
-          console.log('post matches' + matches[0]);  
           if(matches.length === 0){
             alert('no matches');
             reset();
@@ -71,15 +68,12 @@ function search(){
           resultsRow.appendChild(resultsCell);
           resultsRow.appendChild(symbolCell);
 
-          //console.log(matches[f]);
-          //console.log(matches[f+1]);
           resultsRow.setAttribute("class","rows");
           resultsTable.appendChild(resultsRow);
           var buttonCell=document.createElement("TD")
           var x = document.createElement("BUTTON");
           resultsRow.appendChild(buttonCell);
           x.setAttribute("id", p);
-          console.log('p test' + p)
           x.setAttribute("class","stockbuttons");
           x.addEventListener("click", stock1, false);
           var t = document.createTextNode("Stock 1");
@@ -98,7 +92,6 @@ function search(){
       }
           tableloc = document.getElementById("searchresults");
           tableloc.appendChild(resultsTable);
-          console.log(matches);
       })
   }
 
@@ -120,7 +113,6 @@ function stock2(){
   var buttId = this.id;
   var compId = document.getElementById("myTable").rows[buttId].cells[1].innerHTML;
   var compname = document.getElementById("myTable").rows[buttId].cells[0].innerHTML;
-  console.log(compname);
   document.getElementById('secondspot').innerHTML = compId;
   document.getElementById('secondcompany').innerHTML = compname;
   document.getElementById('secondcompany').style.background = "#c8b9cd";
@@ -181,8 +173,6 @@ for(y=0; y < 90; y++){
 var diff = firstrun[y]-secondrun[y];
 diffarray.push(Math.abs(diff))
 }
-console.log('diff array' + diffarray);
-//console.log(diffarray.reduce(getSum));
 var mean = diffarray.reduce(getSum) / diffarray.length;
   var varianceArray = [];
 
@@ -193,23 +183,18 @@ for(y=0; y < 90; y++){
 
 }
 sd = Math.sqrt(varianceArray.reduce(getSum) / varianceArray.length);
-console.log(mean);
-console.log("High-end: " + (mean + sd));
-console.log("Low-end: " + (mean - sd));
+
 var onelastclose = firstrun.shift();
 var twolastclose = secondrun.shift();
 var oneclosenumber = Number(onelastclose);
 var twoclosenumber = Number(twolastclose); 
-console.log('oneclosenumber ' + oneclosenumber + ' twoclosenumber ' + twoclosenumber);
 if( oneclosenumber > twoclosenumber){
  var compTwo = document.getElementById('firstspot').innerHTML;
  var compOne = document.getElementById('secondspot').innerHTML;  
-  console.log('if ' + onelastclose + twolastclose);
 }
 else{
 var compTwo = document.getElementById('secondspot').innerHTML;
 var compOne = document.getElementById('firstspot').innerHTML;
-console.log('else ' + onelastclose + twolastclose);
 }
 document.getElementById('instructions').style.display = "grid";
 document.getElementById("meanspread").innerHTML= "$" + Math.round(mean*100)/ 100 ;
@@ -234,13 +219,11 @@ function getFocus() {
 }
 
 function reset (){
-  console.log('focus');
   getFocus();
   location.reload();
 
  }
 function getSum(total, num) {
-  console.log('get sum');
   return total + num;
 }
 function ford(){
@@ -254,7 +237,6 @@ function ford(){
   document.getElementById('secondcompany').innerHTML = gm;
   var one = document.getElementById("firstspot").innerHTML;
   document.getElementById("comparebtn").focus();
-  console.log(one);
   compare();
 }
 
@@ -269,7 +251,6 @@ function delta(){
   document.getElementById('secondcompany').innerHTML = sw;
   var one = document.getElementById("firstspot").innerHTML;
   document.getElementById("comparebtn").focus();
-  console.log(one);
   compare();
 }
 function lowes(){
@@ -283,7 +264,6 @@ function lowes(){
   document.getElementById('secondcompany').innerHTML = hd;
   var one = document.getElementById("firstspot").innerHTML;
   document.getElementById("comparebtn").focus();
-  console.log('one ' + one);
   compare();
 }
 function apple(){
@@ -297,7 +277,6 @@ function apple(){
   document.getElementById('secondcompany').innerHTML = msft;
   var one = document.getElementById("firstspot").innerHTML;
   document.getElementById("comparebtn").focus();
-  console.log('one ' + one);
   compare();
 }
 function walmart(){
@@ -311,6 +290,5 @@ function walmart(){
   document.getElementById('secondcompany').innerHTML = targ;
   var one = document.getElementById("firstspot").innerHTML;
   document.getElementById("comparebtn").focus();
-  console.log('one ' + one);
   compare();
 }
