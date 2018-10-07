@@ -19,9 +19,14 @@ td{
   grid-column: 1/-1;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr .5fr 1fr;
+  grid-template-rows: 1fr auto auto;
   background-color: #6257FF;
 }
+ .white_back{
+   grid-column: 1/-1;
+   grid-row: 3/4;
+   background-color: white;
+ }
 .head{
   font-family:  sans-serif;
   color: white;
@@ -29,6 +34,7 @@ td{
   justify-self: center;
   font-size: 3em;
   font-weight: 100;
+  text-align: center;
 }
 #explanation{
 
@@ -36,12 +42,14 @@ td{
 
 }
 #examples{
-  grid-column: 1/-1;
+  grid-column: 2/-1;
   grid-row: 3/4;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  display: flex;
   background-color: white;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  border-top: 3px solid black;
+  margin-right: 30px;
 }
 .exbuttons{
   background-color: #6257FF;
@@ -84,9 +92,13 @@ height: 55px;
 }
 .example_text{
   font-family: sans-serif;
-  font-size: 1.5em;
-  font-weight: lighter;
-  margin-top: -10px;
+font-size: 1.5em;
+font-weight: lighter;
+margin-top: 20px;
+grid-row: 3/4;
+grid-column: 1/2;
+z-index: 4;
+text-align: center;
 }
 
 .text_excell{
@@ -545,7 +557,7 @@ font-size: 1em;
 .centered_main_line{
   width: 5px;
   background-color: black;
-  height: 86%;
+  height: 93%;
   grid-column: 1/-1;
   justify-self: center;
   z-index: 6;
@@ -569,7 +581,7 @@ font-size: 1em;
 .second_line{
   width: 5px;
   background-color: black;
-  height: 94%;
+  height: 92%;
   grid-column: 3/5;
   grid-row: 1/6;
   justify-self: center;
@@ -585,7 +597,7 @@ font-size: 1em;
   grid-row: 1/-1;
   align-self: center;
   margin-top: 0;
-  height: 94%;
+ 
 }
 .lesser_top_up{
   grid-row: 1/-1;
@@ -674,8 +686,44 @@ input[type=text]:focus, wind:focus {
 }
 @media screen and (max-width: 900px) {
   .arb_description {
+    grid-column: 1/-1;
+    grid-row: 2/3;
+    font-family: sans-serif;
+    font-size: 1.2em;
+    color: white;
+    text-align: center;
+    /* align-items: center; */
+    margin-top: -20px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+}
+
+@media screen and (max-width: 700px) {
+  #instructions{
+    grid-column: 1/-1;
+    grid-row: 1/4;
     display: none;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
   }
+  .first_set{
+    grid-row: 1/2;
+    grid-column: 1/-1;
+  }
+  .second_set{
+    grid-row: 2/3;
+    grid-column: 1/-1;
+  }
+  .third_set{
+    grid-row: 3/4;
+    grid-column: 1/-1;
+  }
+  .line_box{
+    border: 3px solid cadetblue;
+  }
+
+ 
 }
 /* */
 /*.search input { text-indent: 32px;}
